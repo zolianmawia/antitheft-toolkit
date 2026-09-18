@@ -167,11 +167,11 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.4px;
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 4px;
-      background: rgba(245, 158, 11, 0.15);
-      color: #FBBF24;
-      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(56, 189, 248, 0.15);
+      color: #38BDF8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
       white-space: nowrap;
     }
     .badge-normal {
@@ -179,7 +179,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.4px;
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 4px;
       background: rgba(16, 185, 129, 0.15);
       color: #34D399;
@@ -273,7 +273,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.CAMERA</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Silently captures photos of unauthorized persons attempting to unlock, turn off, or tamper with your lost or stolen device.</p>
       </div>
@@ -281,7 +281,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.ACCESS_FINE_LOCATION</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Retrieves accurate GPS coordinates during theft alarms and remote SMS tracking requests.</p>
       </div>
@@ -289,7 +289,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.ACCESS_COARSE_LOCATION</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Provides fallback cell-tower and Wi-Fi location when satellite GPS signals are unavailable indoors.</p>
       </div>
@@ -297,7 +297,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.SEND_SMS</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Sends automated emergency alert SMS messages (with intruder SIM details and GPS links) to your emergency contact.</p>
       </div>
@@ -305,7 +305,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.RECEIVE_SMS</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Listens for authorized remote security commands containing your secret master PIN.</p>
       </div>
@@ -313,7 +313,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.READ_PHONE_STATE</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Monitors SIM card identity and serial numbers to detect when a thief swaps or removes the device SIM.</p>
       </div>
@@ -321,7 +321,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.READ_CONTACTS</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Allows selecting emergency contacts from your phonebook and generates emergency vCard (.vcf) email backups on command.</p>
       </div>
@@ -329,7 +329,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.POST_NOTIFICATIONS</span>
-          <span class="badge-runtime">Dangerous / Runtime</span>
+          <span class="badge-runtime">Runtime (User Consent)</span>
         </div>
         <p class="permission-desc">Displays real-time background protection status, foreground service indicators, and incident alerts.</p>
       </div>
@@ -337,7 +337,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.FOREGROUND_SERVICE</span>
-          <span class="badge-normal">Normal / Install-time</span>
+          <span class="badge-normal">Install-Time (Standard)</span>
         </div>
         <p class="permission-desc">Keeps anti-theft sensors (charger, pocket motion, unlock monitor) continuously active when the screen is locked.</p>
       </div>
@@ -345,7 +345,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.RECEIVE_BOOT_COMPLETED</span>
-          <span class="badge-normal">Normal / Install-time</span>
+          <span class="badge-normal">Install-Time (Standard)</span>
         </div>
         <p class="permission-desc">Automatically restarts anti-theft protection upon device boot, preventing thieves from silencing alarms via restart.</p>
       </div>
@@ -353,7 +353,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.VIBRATE</span>
-          <span class="badge-normal">Normal / Install-time</span>
+          <span class="badge-normal">Install-Time (Standard)</span>
         </div>
         <p class="permission-desc">Triggers haptic vibration patterns during high-decibel anti-theft siren activation.</p>
       </div>
@@ -361,7 +361,7 @@
       <div class="permission-item">
         <div class="permission-top">
           <span class="permission-code">android.permission.INTERNET</span>
-          <span class="badge-normal">Normal / Install-time</span>
+          <span class="badge-normal">Install-Time (Standard)</span>
         </div>
         <p class="permission-desc">Transmits encrypted TLS/SSL SMTP security email alerts to your personal email address.</p>
       </div>
