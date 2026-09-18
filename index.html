@@ -7,68 +7,365 @@
   <style>
     :root {
       --bg: #0B1120;
-      --surface: #1E293B;
-      --surface-border: #334155;
+      --document-bg: #111827;
+      --border-color: #1F2937;
+      --text-main: #F3F4F6;
+      --text-body: #D1D5DB;
+      --text-muted: #9CA3AF;
       --primary: #38BDF8;
-      --text: #F8FAFC;
-      --text-muted: #94A3B8;
+      --primary-hover: #7DD3FC;
       --accent-green: #10B981;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 20px 14px; }
-    .container { max-width: 720px; margin: 0 auto; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 16px; padding: 24px 20px; }
-    h1 { font-size: 22px; color: var(--text); margin-bottom: 8px; font-weight: 800; }
-    .subtitle { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; }
-    .meta { background: #0f172a; padding: 12px; border-left: 4px solid var(--accent-green); border-radius: 6px; font-size: 13px; margin-bottom: 20px; }
-    h2 { font-size: 17px; color: var(--primary); margin: 20px 0 10px; border-bottom: 1px dashed var(--surface-border); padding-bottom: 4px; }
-    p, li { font-size: 13.5px; color: #CBD5E1; margin-bottom: 8px; }
-    ul { padding-left: 18px; margin-bottom: 12px; }
-    .card { background: #0f172a; border: 1px solid var(--surface-border); border-radius: 8px; padding: 12px; margin: 10px 0; }
-    .card h3 { font-size: 14px; color: var(--text); margin-bottom: 4px; }
-    .tag { background: rgba(56, 189, 248, 0.15); color: var(--primary); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 12px; }
-    footer { text-align: center; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--surface-border); color: var(--text-muted); font-size: 12px; }
-    a { color: var(--primary); text-decoration: none; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text-body);
+      line-height: 1.7;
+      font-size: 14.5px;
+      padding: 24px 16px;
+    }
+    .document {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--document-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 36px 32px;
+    }
+    
+    header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    .header-badge {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-size: 26px;
+      color: var(--text-main);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .header-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .developer-info {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+    .developer-info strong {
+      color: var(--text-main);
+    }
+    .developer-info a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .developer-info a:hover {
+      text-decoration: underline;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: var(--primary);
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 6px;
+    }
+    h3 {
+      font-size: 15px;
+      color: var(--text-main);
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    p {
+      margin-bottom: 14px;
+      color: var(--text-body);
+    }
+    ul, ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+      color: var(--text-body);
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    strong {
+      color: var(--text-main);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #1a2234;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    td code {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--primary);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>AntiTheft Toolkit Privacy Policy</h1>
-    <p class="subtitle">Complete Security, Telemetry & Device Protection Suite</p>
-    <div class="meta">
+  <div class="document">
+    <header>
+      <div class="header-badge">Google Play Developer Program Compliant &bull; Official Document</div>
+      <h1>Privacy Policy &mdash; AntiTheft Toolkit</h1>
+      <div class="header-meta">Effective & Last Updated: September 18, 2026 &bull; Version 2.5</div>
+    </header>
+
+    <div class="developer-info">
+      <strong>Data Controller & Developer:</strong> Zolianmawiia<br>
+      <strong>Geographic Location:</strong> Ramhlun South, Aizawl, Mizoram &ndash; 796012, India<br>
+      <strong>Official Contact Email:</strong> <a href="mailto:zlphoto02@gmail.com">zlphoto02@gmail.com</a><br>
+      <strong>Google Play Developer ID:</strong> <a href="https://play.google.com/store/apps/dev?id=8559932296277718300" target="_blank">8559932296277718300</a><br>
+      <strong>Live Policy URL:</strong> <a href="https://zolianmawia.github.io/antitheft-toolkit/privacy-policy.html">https://zolianmawia.github.io/antitheft-toolkit/privacy-policy.html</a>
+    </div>
+
+    <!-- 1. Introduction -->
+    <h2>1. Introduction & Core Privacy Commitment</h2>
+    <p>This Privacy Policy explains how <strong>AntiTheft Toolkit</strong> (hereinafter referred to as &ldquo;the App&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), developed by independent Android software engineer <strong>Zolianmawiia</strong>, handles your data and privacy when using our mobile security application on Android devices.</p>
+    <p>AntiTheft Toolkit is an offline-first physical theft prevention, unauthorized access detection, telemetry alerting, and lost-device recovery suite. Because our primary function is safeguarding your device against theft, unauthorized tampering, and physical intrusion, the App interacts with hardware sensors and system services including the front camera, satellite GPS, telephony state, and SMS broadcast receivers.</p>
+    <p><strong>Our Commitment:</strong> We firmly believe that your personal device and security telemetry belong strictly to you. AntiTheft Toolkit does <strong>NOT</strong> collect, sell, lease, monetize, share, or broker your personal data, photographs, location coordinates, or contacts to third-party advertisers, analytical services, or data brokers.</p>
+
+    <!-- 2. Local Processing -->
+    <h2>2. Architecture: Local On-Device Processing & Zero Cloud Storage</h2>
+    <p>Unlike standard security tools that upload user data to remote commercial cloud servers, AntiTheft Toolkit operates on an <strong>on-device client-side architecture</strong>:</p>
+    <ul>
+      <li><strong>No Remote Company Server:</strong> We do not operate or maintain an external central cloud server that logs, stores, or aggregates your photographs, GPS trails, or SIM data.</li>
+      <li><strong>Direct-to-Owner Alert Dispatch:</strong> In the event of a security alert (such as an incorrect unlock attempt, SIM ejection, or remote SMS inquiry), all photos, GPS coordinates, and battery telemetry are transmitted directly from your smartphone to your personal email address via encrypted TLS/SSL SMTP connections.</li>
+      <li><strong>Local SQLite/Room Sandbox:</strong> All application configuration settings and incident logs are stored strictly inside your phone's private internal storage partition, protected by Android's application isolation framework.</li>
+    </ul>
+
+    <!-- 3. Granular Data Categories -->
+    <h2>3. Granular Categories of Data Collected & Processed</h2>
+    <p>All data processing performed by the App is strictly dedicated to executing theft deterrence, intruder documentation, and emergency device recovery as explicitly authorized by you:</p>
+
+    <h3>3.1 Intruder Facial Photographs (Camera Sensor)</h3>
+    <p><strong>Processing Context:</strong> The App uses the device's front-facing camera to silently take a photograph when incorrect unlock credentials (PIN, pattern, or password) exceed your chosen threshold (e.g., 3 failed attempts), upon unauthorized device power-off attempts, or when triggered remotely by an authorized SMS recovery command.</p>
+    <p><strong>Handling:</strong> Photographs are cached temporarily in the App's private local internal directory (<code>context.cacheDir</code>) and attached directly to your security email alert. They are never transmitted to third parties.</p>
+
+    <h3>3.2 Geolocation Data (GPS & Network Triangulation)</h3>
+    <p><strong>Processing Context:</strong> High-precision satellite GPS coordinates (latitude, longitude, altitude, accuracy) and network cell triangulation are accessed exclusively during active alarm states, intruder captures, unauthorized SIM changes, or upon receipt of a remote SMS location query containing your secret PIN.</p>
+    <p><strong>Handling:</strong> Converted into an interactive Google Maps location link and dispatched immediately via email and emergency SMS to your designated contact.</p>
+
+    <h3>3.3 SIM Card & Telephony Telemetry (IMSI, Serial, Carrier)</h3>
+    <p><strong>Processing Context:</strong> To protect against theft where a perpetrator swaps or removes the SIM card, the App reads the active SIM identity (ICCID/IMSI) upon device reboot or SIM replacement.</p>
+    <p><strong>Handling:</strong> If an unknown or unauthorized SIM is inserted, an emergency SMS is automatically dispatched to your emergency contact revealing the new phone number and device location.</p>
+
+    <h3>3.4 SMS Remote Security Commands</h3>
+    <p><strong>Processing Context:</strong> The App's broadcast receiver listens for incoming SMS messages strictly matching predefined security syntax combined with your master PIN (such as <code>SMS Siren &lt;PIN&gt;</code>, <code>SMS Location &lt;PIN&gt;</code>, <code>SMS Flashlight &lt;PIN&gt;</code>, or <code>SMS Stop &lt;PIN&gt;</code>).</p>
+    <p><strong>Handling:</strong> Standard personal text messages are ignored and untouched. Security command messages are parsed locally on the device to execute the requested action.</p>
+
+    <h3>3.5 Emergency Contacts & Address Book (vCard Backup)</h3>
+    <p><strong>Processing Context:</strong> Your selected emergency contact number and email are stored locally to receive distress messages. If you initiate the remote emergency contact backup feature (<code>SMS Backup &lt;PIN&gt;</code>), the App compiles an industry-standard <code>.vcf</code> vCard file sent exclusively to your personal email address.</p>
+
+    <h3>3.6 Motion & Hardware Sensors</h3>
+    <p><strong>Processing Context:</strong> The hardware accelerometer detects sudden physical movement (Motion Alarm), the proximity sensor detects removal from pockets (Pocket Theft Alarm), and battery state listeners detect unauthorized charger disconnection (Charger Removal Alarm).</p>
+
+    <!-- 4. Permissions Table -->
+    <h2>4. Android Runtime Permissions & Operational Disclosures</h2>
+    <p>In strict compliance with Google Play Developer Program Policies (specifically the Sensitive Data & Permissions Policy), the following table details each permission requested by AntiTheft Toolkit and its singular functional necessity:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Permission Name</th>
+          <th>Type</th>
+          <th>Exact Functional Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>android.permission.CAMERA</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Silently captures photos of unauthorized persons attempting to unlock or tamper with your lost or stolen device.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.ACCESS_FINE_LOCATION</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Retrieves accurate GPS coordinates during theft alarms and remote SMS tracking requests.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.ACCESS_COARSE_LOCATION</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Provides fallback cell-tower and Wi-Fi location when satellite GPS signals are unavailable indoors.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.SEND_SMS</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Sends automated emergency alert SMS messages (with intruder SIM details and GPS links) to your emergency contact.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.RECEIVE_SMS</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Listens for authorized remote security commands containing your secret master PIN.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.READ_PHONE_STATE</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Monitors SIM card identity and serial numbers to detect when a thief swaps or removes the device SIM.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.READ_CONTACTS</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Allows selecting emergency contacts from your phonebook and generates emergency vCard (.vcf) email backups on command.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.POST_NOTIFICATIONS</code></td>
+          <td>Dangerous / Runtime</td>
+          <td>Displays real-time background protection status, foreground service indicators, and incident alerts.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.FOREGROUND_SERVICE</code></td>
+          <td>Normal / Install-time</td>
+          <td>Keeps anti-theft sensors (charger, pocket motion, unlock monitor) continuously active when the screen is locked.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.RECEIVE_BOOT_COMPLETED</code></td>
+          <td>Normal / Install-time</td>
+          <td>Automatically restarts anti-theft protection upon device boot, preventing thieves from silencing alarms via restart.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.VIBRATE</code></td>
+          <td>Normal / Install-time</td>
+          <td>Triggers haptic vibration patterns during high-decibel anti-theft siren activation.</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.INTERNET</code></td>
+          <td>Normal / Install-time</td>
+          <td>Transmits encrypted TLS/SSL SMTP security email alerts to your personal email address.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 5. Device Administration -->
+    <h2>5. Device Administration & Security Protection Capabilities</h2>
+    <p>AntiTheft Toolkit provides an optional <strong>Device Administrator</strong> capability (<code>DeviceAdminReceiver</code>):</p>
+    <ul>
+      <li><strong>Purpose:</strong> Android protects lockscreen security events strictly. To detect and count incorrect PIN, pattern, or password attempts and trigger the intruder camera silently, Android requires Device Admin authorization (specifically <code>watch-login</code>).</li>
+      <li><strong>No Remote Factory Reset or Lockout:</strong> AntiTheft Toolkit only requests failed-password reporting. The App does not alter your screen lock password, lock out the device, or perform unrequested remote data wipes.</li>
+      <li><strong>User Control:</strong> You can enable or revoke Device Admin status at any time directly in the App Settings or via Android System Settings &gt; Security &gt; Device Admin Apps.</li>
+    </ul>
+
+    <!-- 6. Direct Email Protocol -->
+    <h2>6. Direct-to-Email Encrypted Telemetry (SMTP Protocol)</h2>
+    <p>AntiTheft Toolkit provides direct-to-email notifications using standard SMTP (Simple Mail Transfer Protocol) over TLS (Port 587) or SSL (Port 465):</p>
+    <ul>
+      <li>All emails (including intruder photos, battery level, and GPS coordinates) are transmitted directly from your handset to your personal destination mailbox.</li>
+      <li>No middleman server or external cloud API intercepts or caches the content of your security notifications.</li>
+      <li>If using Gmail with a Google App Password, the 16-character token remains encrypted exclusively on your local device storage and is never uploaded or shared.</li>
+    </ul>
+
+    <!-- 7. Zero Ads & Monetization -->
+    <h2>7. Zero Third-Party Advertising & Monetization</h2>
+    <p>To guarantee the utmost data privacy for our users:</p>
+    <ul>
+      <li><strong>No Advertising SDKs:</strong> AntiTheft Toolkit contains no advertising frameworks (such as AdMob, Unity, or Facebook Audience Network).</li>
+      <li><strong>No Behavioral Tracking:</strong> We do not integrate third-party telemetry, behavioral analytics, or user tracking SDKs.</li>
+      <li><strong>No Data Sales:</strong> We do not sell, rent, monetize, or broker user data under any circumstances.</li>
+    </ul>
+
+    <!-- 8. Data Retention & Deletion -->
+    <h2>8. Data Retention, Local Storage & Right to Deletion</h2>
+    <p>We respect your right to manage and permanently delete your data:</p>
+    <ul>
+      <li><strong>Local Incident Logs:</strong> Security incident logs are kept in your device's private SQLite/Room database.</li>
+      <li><strong>One-Tap Log Purge:</strong> You can permanently wipe all stored security logs and cached intruder photos at any time by tapping <strong>Admin Dashboard &gt; Clear All Logs</strong> inside the App.</li>
+      <li><strong>Complete Deletion on Uninstall:</strong> Uninstalling the App immediately removes all stored settings, contact records, and incident histories from your device. Because we maintain no external database, there are no lingering cloud copies.</li>
+    </ul>
+
+    <!-- 9. Legal Grounds & Global Compliance -->
+    <h2>9. Legal Grounds & Global Privacy Regulations</h2>
+    <p>Under the European Union General Data Protection Regulation (GDPR) and the Indian Digital Personal Data Protection Act 2023 (DPDP Act), we process telemetry under the following lawful bases:</p>
+    <ul>
+      <li><strong>Explicit User Consent:</strong> You voluntarily activate and configure the camera, location, and SMS monitoring features.</li>
+      <li><strong>Contractual Performance:</strong> Processing data is strictly necessary to execute the theft prevention and device recovery services you expect.</li>
+      <li><strong>Legitimate Interests:</strong> Protecting your personal physical property, confidential mobile records, and personal hardware from theft or tampering.</li>
+    </ul>
+
+    <!-- 10. Children's Privacy -->
+    <h2>10. Children's Online Privacy Protection (COPPA & Families Policy)</h2>
+    <p>AntiTheft Toolkit is a general-audience mobile device security application. It is not directed at children under the age of 13 (or 16 in applicable jurisdictions). We do not knowingly collect or solicit personal information from children.</p>
+
+    <!-- 11. Security Safeguards -->
+    <h2>11. Security Safeguards & Technical Measures</h2>
+    <p>We implement robust technical measures to safeguard your settings:</p>
+    <ul>
+      <li><strong>Master PIN Protection:</strong> The Admin Dashboard, settings modification, and log viewer require verification of your secret master PIN.</li>
+      <li><strong>Anti-Tamper Detection:</strong> When an unauthorized individual attempts to power off the device, the App intercepts the event to sustain background security monitoring.</li>
+      <li><strong>Encrypted Connections:</strong> All outbound alert transmissions are secured using TLS/SSL cryptographic protocols.</li>
+    </ul>
+
+    <!-- 12. Policy Changes -->
+    <h2>12. Changes to This Privacy Policy</h2>
+    <p>We may periodically update this policy to reflect application improvements or maintain compliance with Google Play policies and statutory requirements. Updates will be posted directly to our official URL: <a href="https://zolianmawia.github.io/antitheft-toolkit/privacy-policy.html">https://zolianmawia.github.io/antitheft-toolkit/privacy-policy.html</a>.</p>
+
+    <!-- 13. Contact Information -->
+    <h2>13. Data Controller & Contact Information</h2>
+    <p>For any inquiries, questions, or clarification regarding this Privacy Policy or our security practices, please contact the developer:</p>
+    <p>
       <strong>Developer:</strong> Zolianmawiia<br>
-      <strong>Location:</strong> Ramhlun South, Aizawl, Mizoram, India<br>
-      <strong>Official Email:</strong> zlphoto02@gmail.com<br>
-      <strong>Public Web URL:</strong> https://zolianmawia.github.io/antitheft-toolkit/privacy-policy.html
-    </div>
+      <strong>Address:</strong> Ramhlun South, Aizawl, Mizoram &ndash; 796012, India<br>
+      <strong>Direct Email:</strong> <a href="mailto:zlphoto02@gmail.com">zlphoto02@gmail.com</a><br>
+      <strong>Google Play Console Developer Page:</strong> <a href="https://play.google.com/store/apps/dev?id=8559932296277718300" target="_blank">Developer ID 8559932296277718300</a>
+    </p>
 
-    <h2>1. Core Privacy Commitment</h2>
-    <p>We believe your personal security and data belong solely to you. AntiTheft Toolkit does NOT sell, monetize, broker, or transfer any user data, photos, GPS coordinates, or emergency contacts to advertisers or third parties.</p>
-
-    <h2>2. Purpose of Sensitive Telemetry</h2>
-    <div class="card">
-      <h3>Intruder Photos</h3>
-      <p>Captured using front camera silently only when wrong unlock credentials are submitted past the limit, or during unauthorized unplug/power-off attempts.</p>
-    </div>
-    <div class="card">
-      <h3>GPS Location</h3>
-      <p>High-accuracy GPS coordinates retrieved during security alarms, failed unlock events, SIM change detection, or remote SMS inquiry.</p>
-    </div>
-    <div class="card">
-      <h3>SIM & IMSI Telephony</h3>
-      <p>Used to detect SIM card removal and notify the emergency contact of the intruder's newly inserted number.</p>
-    </div>
-    <div class="card">
-      <h3>Contacts Backup (.vcf)</h3>
-      <p>Only generated upon remote command to create an emergency vCard backup sent directly to the owner's email.</p>
-    </div>
-
-    <h2>3. Direct Encrypted Transmission</h2>
-    <p>Alerts are transmitted straight from your device to your personal email address via encrypted TLS/SSL SMTP connections.</p>
-
-    <h2>4. Developer Contact</h2>
-    <p>Zolianmawiia &bull; Ramhlun South, Aizawl, Mizoram &bull; zlphoto02@gmail.com</p>
     <footer>
-      &copy; 2026 AntiTheft Toolkit. Google Play Developer Program Compliant.
+      &copy; 2026 AntiTheft Toolkit &bull; Designed & Developed by Zolianmawiia, Aizawl, Mizoram, India.<br>
+      Strictly compliant with Google Play Developer Program Policies, Android Sensitive Permissions Guidelines, and Global Data Safety Standards.
     </footer>
   </div>
 </body>
